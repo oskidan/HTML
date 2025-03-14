@@ -17,4 +17,11 @@ extension Node {
         }
         _ = appendChild(child.jsValue)
     }
+
+    func remove<Child>(child: Child) where Child: Node & ConvertibleToJSValue {
+        guard let removeChild: JSMethod = jsObject.removeChild else {
+            fatalError("The node has no method called 'removeChild'.")
+        }
+        _ = removeChild(child.jsValue)
+    }
 }
