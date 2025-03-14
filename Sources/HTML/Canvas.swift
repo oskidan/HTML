@@ -7,7 +7,7 @@ public struct Canvas {
 extension Canvas: Element {}
 
 extension Canvas {
-    init?(width: Int, height: Int) {
+    init?() {
         guard let document = Document.shared else {
             return nil
         }
@@ -15,5 +15,29 @@ extension Canvas {
             return nil
         }
         self.jsObject = jsObject
+    }
+
+    var width: Double {
+        get {
+            guard case let .number(value) = jsObject.width else {
+                return 0.0
+            }
+            return value
+        }
+        set {
+            jsObject.width = newValue.jsValue
+        }
+    }
+
+    var height: Double {
+        get {
+            guard case let .number(value) = jsObject.height else {
+                return 0.0
+            }
+            return value
+        }
+        set {
+            jsObject.height = newValue.jsValue
+        }
     }
 }
