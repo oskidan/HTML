@@ -1,11 +1,11 @@
 import JavaScriptKit
 
-public protocol Node {
+public protocol Node: Equatable, ConvertibleToJSValue {
     var jsObject: JSObject { get }
 }
 
 extension ConvertibleToJSValue where Self: Node {
-    var jsValue: JSValue {
+    public var jsValue: JSValue {
         .object(jsObject)
     }
 }
