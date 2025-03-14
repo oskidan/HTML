@@ -36,5 +36,12 @@ let package = Package(
                 "JavaScriptKit"
             ]
         ),
+        .executableTarget(
+            name: "HTMLDemo",
+            dependencies: [
+                "HTML",
+                "JavaScriptKit"
+            ]
+        )
     ]
 )
