@@ -1,5 +1,5 @@
 {
-  "originHash" : "eb0a919862c4175b4c7a5abc14338a9af944c07b6bc7e1eb28fc54af69eda74c",
+  "originHash" : "d9206f487718195709b7569ed49cac5db399ce9429434e4738e654eb8544cb21",
   "pins" : [
     {
       "identity" : "carton",
@@ -8,6 +8,15 @@
       "state" : {
         "revision" : "57ab2e7c2419c0f6f2516d1c25142a9fb763ca7a",
         "version" : "1.1.3"
+      }
+    },
+    {
+      "identity" : "css",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/oskidan/CSS.git",
+      "state" : {
+        "branch" : "main",
+        "revision" : "8a1a32af700faa60ba4965a4964f8047997d643b"
       }
     },
     {

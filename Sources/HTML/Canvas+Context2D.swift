@@ -1,3 +1,4 @@
+import CSS
 import JavaScriptKit
 
 extension Canvas {
@@ -23,6 +24,24 @@ extension Canvas.Context2D: ConvertibleToJSValue {
 }
 
 extension Canvas.Context2D {
+    // FIXME: According to https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/fillStyle
+    // `fillStyle` is one of the following:
+    //      - a color;
+    //      - a linear or a radial gradient;
+    //      - a repeating image.
+    // For the time being, only a color (specifically, a hexadecimal color) is supported.
+    public var fillStyle: HEXColor {
+        get {
+            guard case let .string(fillStyle) = jsObject.fillStyle else {
+                return "#000"
+            }
+            return HEXColor(String(fillStyle)) ?? "#000"
+        }
+        set {
+            jsObject.fillStyle = newValue.jsValue
+        }
+    }
+
     public func fillRect(x: Double, y: Double, width: Double, height: Double) {
         guard let fillRect: JSMethod = jsObject.fillRect else {
             fatalError("The rendering conext has no method called 'fillRect'.")

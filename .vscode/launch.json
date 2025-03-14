@@ -2,17 +2,35 @@
     "configurations": [
         {
             "type": "node-terminal",
-            "name": "HTML Unit Tests",
+            "name": "Unit Tests",
             "command": "./unitTests.sh && exit",
             "cwd": "${workspaceFolder:HTML}",
             "request": "launch"
         },
         {
             "type": "node-terminal",
-            "name": "HTML Demo",
+            "name": "Demo",
             "command": "./demo.sh && exit",
             "cwd": "${workspaceFolder:HTML}",
             "request": "launch"
         },
+        {
+            "type": "swift-lldb",
+            "request": "launch",
+            "args": [],
+            "cwd": "${workspaceFolder:HTML}",
+            "name": "Debug HTMLDemo",
+            "program": "${workspaceFolder:HTML}/.build/debug/HTMLDemo",
+            "preLaunchTask": "swift: Build Debug HTMLDemo"
+        },
+        {
+            "type": "swift-lldb",
+            "request": "launch",
+            "args": [],
+            "cwd": "${workspaceFolder:HTML}",
+            "name": "Release HTMLDemo",
+            "program": "${workspaceFolder:HTML}/.build/release/HTMLDemo",
+            "preLaunchTask": "swift: Build Release HTMLDemo"
+        }
     ]
 }

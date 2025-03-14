@@ -21,11 +21,17 @@ let package = Package(
             url: "https://github.com/swiftwasm/JavaScriptKit", 
             exact: "0.23.0"
         ),
+        .package(
+            url: "https://github.com/oskidan/CSS.git",
+            // The main branch will be used until initial release.
+            branch: "main"
+        )
     ],
     targets: [
         .target(
             name: "HTML",
             dependencies: [
+                "CSS",
                 "JavaScriptKit"
             ]
         ),
@@ -39,6 +45,7 @@ let package = Package(
         .executableTarget(
             name: "HTMLDemo",
             dependencies: [
+                "CSS",
                 "HTML",
                 "JavaScriptKit"
             ]
