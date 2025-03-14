@@ -10,7 +10,7 @@ final class Simple2DRendering: XCTestCase {
     //  Given: I have a canvas
     //  When: I get its 2D rendering context
     //  Then: The context is not null
-    func test_getting_teh_rendering_context() {
+    func test_getting_the_rendering_context() {
         guard let canvas = Canvas(width: 320, height: 240) else {
             XCTFail("Cannot create a canvas.")
             return
