@@ -17,6 +17,15 @@ extension Canvas {
         self.jsObject = jsObject
     }
 
+    init?(width: Double, height: Double) {
+        guard let canvas = Canvas() else {
+            return nil
+        }
+        self = canvas
+        self.width = width
+        self.height = height
+    }
+
     var width: Double {
         get {
             guard case let .number(value) = jsObject.width else {
