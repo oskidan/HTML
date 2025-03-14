@@ -1,0 +1,12 @@
+{
+    "configurations": [
+        {
+            "type": "node-terminal",
+            "name": "HTML Unit Tests",
+            // If it quits, then everything was fine.
+            "command": "./unitTests.sh && exit",
+            "cwd": "${workspaceFolder:HTML}",
+            "request": "launch",
+        }
+    ]
+}
