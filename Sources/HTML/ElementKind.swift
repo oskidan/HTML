@@ -4,12 +4,6 @@ public struct ElementKind: Sendable {
     let type: any Element.Type
 }
 
-// extension ElementKind {
-//     public init<T>(type: T.Type = T.self) where T: Element {
-//         self.type = type
-//     }
-// }
-
 extension ElementKind: Equatable {
     public static func ==(lhs: Self, rhs: Self) -> Bool {
         lhs.type == rhs.type
