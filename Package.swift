@@ -40,7 +40,11 @@ let package = Package(
             name: "HTMLTests",
             dependencies: [
                 "HTML",
-                "JavaScriptKit"
+                "JavaScriptKit",
+                .product(
+                    name: "JavaScriptEventLoopTestSupport", 
+                    package: "JavaScriptKit" 
+                )
             ]
         ),
         .executableTarget(
