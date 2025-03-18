@@ -4,6 +4,7 @@ import PackageDescription
 
 let package = Package(
     name: "HTML",
+    platforms: [.macOS(.v14)],
     products: [
         .library(
             name: "HTML",
@@ -47,7 +48,11 @@ let package = Package(
             dependencies: [
                 "CSS",
                 "HTML",
-                "JavaScriptKit"
+                "JavaScriptKit",
+                .product(
+                    name: "JavaScriptEventLoop",
+                    package: "JavaScriptKit"
+                ),
             ]
         )
     ]
