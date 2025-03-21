@@ -17,7 +17,7 @@ extension Window {
     @available(macOS 14.0, iOS 17.0, watchOS 10.0, tvOS 17.0, *)
     @MainActor
     public func requestAnimationFrame() async {
-        guard let requestAnimationFrame: JSMethod = jsObject.requestAnimationFrame else {
+        guard case let .function(requestAnimationFrame) = jsObject.requestAnimationFrame else {
             return
         }
         return await withUnsafeContinuation { continuation in
