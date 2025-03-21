@@ -23,17 +23,17 @@ extension Document {
     }
 
     func createElement(_ name: String) -> JSObject? {
-        guard let createElement: JSMethod = jsObject.createElement else {
+        guard case let .function(createElement) = jsObject.createElement else {
             return nil
         }
-        guard case let .object(jsObject) = createElement(name.jsValue) else {
+        guard case let .object(jsObject) = createElement(this: jsObject, name.jsValue) else {
             return nil
         }
         return jsObject
     }
 
     func getElementById(_ id: String) -> JSObject? {
-        guard let getElementById: JSMethod = jsObject.getElementById else {
+        guard case let .function(getElementById) = jsObject.getElementById else {
             return nil
         }
         guard case let .object(jsObject) = getElementById(id.jsValue) else {

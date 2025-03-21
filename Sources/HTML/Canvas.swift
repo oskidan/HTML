@@ -1,12 +1,16 @@
 import JavaScriptKit
 
 public struct Canvas {
+
     public let jsObject: JSObject
 }
 
 extension Canvas: Element {}
 
+extension Canvas: CanvasPrtocol {}
+
 extension Canvas {
+
     public init?() {
         guard let document = Document.shared else {
             return nil
@@ -24,29 +28,5 @@ extension Canvas {
         self = canvas
         self.width = width
         self.height = height
-    }
-
-    public var width: Double {
-        get {
-            guard case let .number(value) = jsObject.width else {
-                return 0.0
-            }
-            return value
-        }
-        set {
-            jsObject.width = newValue.jsValue
-        }
-    }
-
-    public var height: Double {
-        get {
-            guard case let .number(value) = jsObject.height else {
-                return 0.0
-            }
-            return value
-        }
-        set {
-            jsObject.height = newValue.jsValue
-        }
     }
 }

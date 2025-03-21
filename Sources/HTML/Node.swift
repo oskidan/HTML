@@ -12,16 +12,16 @@ extension ConvertibleToJSValue where Self: Node {
 
 extension Node {
     public func append<Child>(child: Child) where Child: Node & ConvertibleToJSValue {
-        guard let appendChild: JSMethod = jsObject.appendChild else {
+        guard case let .function(appendChild) = jsObject.appendChild else {
             fatalError("The node has no method called 'appendChild'.")
         }
-        _ = appendChild(child.jsValue)
+        _ = appendChild(this: jsObject, child.jsValue)
     }
 
     public func remove<Child>(child: Child) where Child: Node & ConvertibleToJSValue {
-        guard let removeChild: JSMethod = jsObject.removeChild else {
+        guard case let .function(removeChild) = jsObject.removeChild else {
             fatalError("The node has no method called 'removeChild'.")
         }
-        _ = removeChild(child.jsValue)
+        _ = removeChild(this: jsObject, child.jsValue)
     }
 }

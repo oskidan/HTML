@@ -16,10 +16,24 @@ body.append(child: canvas)
 guard var context2D = canvas.context2D else {
     fatalError("Whoops, cannot get the 2D conext.")
 }
+context2D.compositeOperation = .copy
+
+guard let offscreenCanvas = OffscreenCanvas(width: 320, height: 240) else {
+    fatalError("Whoops, cannot create an offscreen canvas.")
+}
+
+guard let offscreenContext2D = offscreenCanvas.context2D else {
+    fatalError("Whoops, cannot get the offscreen 2D context.")
+}
 
 for i in 0... {
     await Window.shared?.requestAnimationFrame()
-    // Draw a checker board pattern.
+    offscreenContext2D.clearRect(x: 0, y: 0, width: 320, height: 240)
+    drawCheckerBoard(context2D: offscreenContext2D, offset: i)
+    context2D.drawImage(offscreenCanvas, x: 0, y: 0)
+}
+
+func drawCheckerBoard(context2D: RenderingContext2D, offset i: Int) {
     let cellSize = 16.0
     for x in 0..<Int(canvas.width / cellSize) {
         for y in 0..<Int(canvas.height / cellSize) {
